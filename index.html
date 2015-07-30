@@ -1,408 +1,778 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+        <title>Content Manager's Course - Catalyst</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+        <meta name="author" content="Catalyst">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
 
-	<body>
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
 
-		<div class="reveal">
+        <!-- Please put any custom styles here -->
+        <style>
+            .reveal .slides h2 {
+               font-size: 1.5em;
+               text-align: left;
+            }
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+            .reveal .slides p,
+            .reveal .slides li {
+               font-size: .9em;
+               text-align: left;
+               width: 100%;
+            }
 
-				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
+            .reveal .slides .column {
+                font-size: 70%;
+                font-family: mono;
+                font-weight: bold;
+                background: #eee;
+                margin-bottom: 0.5em;
+                text-align: left;
+                line-height: 1.2em;
+            }
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+            .reveal .slides .title-slide.banner-10 {
+                background: none;
+            }
+            .reveal .slides h2.blue {
+                float: left;
+                padding-top: 165px;
+            }
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
+            .reveal .slides .content-heavy p {
+                font-size: .7em;
+            }
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+            .reveal h2.font-white {
+                color: white;
+                padding: 200px 100px;
+                text-align: center;
+            }
 
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
+            .back-black {
+                background-color: black;
+            }
+            
+            a.intro-link {
+                display: inline-block; 
+                margin-top: 32%;
+            }
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+            .image-right {
+                float: right;
+                width: 40%; 
+            }
+            .feature-text {
+                color: red;
+            }
+            .reveal .slides .text-center {
+                text-align: center;
+            }
+            .reveal .slides .text-right {
+                text-align: right;
+            }
+            .reveal .slides .small-text {
+                font-size: 60%;
+            }
 
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+        </style>
+    </head>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+    <body>
 
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+        <div class="reveal">
 
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
+                <section>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <h3>Drupal Content Managers</h3>
+                    <p class="small-text text-center">
+                        Presented by <a href="#">Julia Larsen</a>
+                    </p>
+                </section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
+                <section class="title-slide">
+                    <h2 class="orange">Hi! I'm Julia.</h2>
+                     <aside class="notes">
+                        <ul>
+                            <li>Drupal dev 1.5 years</li>
+                            <li>Worked on nzpost stamps website, ministry of health, IRD, LINZ, Catalyst website</li>
+                            <li>In other lives I've been a Art Consultant, Travel Consultant and Project Manager</li> 
+                            <li>Outside of work: Jet, drawing/painting, motorbikes, wine</li> 
+                        </ul>
+                    </aside>
+                </section>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
+                <section>
+                    <h2 class="text-center">Housekeeping</h2>
+                    <p>Follow along at <a href="http://memoirdiem.com/drupal-content-managers/">http://memoirdiem.com/drupal-content-managers/</a></p>
+                    <aside class="notes">
+                        <ul>
+                            <li>Toliets, fire alarms</li>
+                            <li>Breaks</li>
+                            <li>Style of the day</li>
+                            <li>Questions</li>
+                        </ul>
+                    </aside>
+                </section>
 
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-				</section>
+                <section>
+                    <h2 class="text-center">Agenda</h2>
+                    <ul>
+                        <li class="fragment">Overview of the web</li>
+                        <li class="fragment">HTML / CSS</li>
+                        <li class="fragment">Writing for web</li>
+                        <li class="fragment">Accessibility</li>
+                        <li class="fragment">Drupal &amp; WYSIWYG
+                            <ul>
+                                <li>Overview</li>
+                                <li>Content editing</li>
+                                <li>Useful modules</li>
+                                <li>Users and roles</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">Your topic here</li>
+                    </ul>
+                    <aside class="notes">
+                    <ul>
+                        <li>Overview of the web, what it's made of and the basics of how it works</li>
+                        <li>HTML / CSS: content and presentation. key elements, semantics</li>
+                        <li>The fundamentals of writing for web: tone, jargon</li>
+                        <li>Accessibility: why, how</li>
+                        <li>Drupal
+                            <ul>
+                                <li>Overview</li>
+                                <li>Content editing</li>
+                                <li>Useful modules</li>
+                                <li>Users and roles</li>
+                                <li>Do some exercises and play in a test environment</li>
+                            </ul>
+                        </li>
+                        <li>Your topic here: extra time. We can discuss at lunch</li>
+                    </ul>
+                    </aside>
+                </section>
 
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
+                
+                <!-- 'technical background' -->
+                <section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
+                    <section class="title-slide banner-7">
+                        <h2 class="orange">The Web</h2>
+                        <p class="text-right">What is it?</p>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+                        <aside class="notes">
+                            Start with a techical background
+                        </aside>
+                    </section>
 
-    var nodes = document.querySelectorAll( selector );
+                    <section>
+                        <h2 class="text-center">The Web is made of...</h2>
+                        <ul>
+                            <li class="fragment">Content (HTML), including:
+                                <ul>
+                                    <li>Text</li>
+                                    <li>Multimedia (images, audio, video)</li>
+                                    <li>Embedded content (iframes, flash)</li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Presentation - layout and style (CSS)</li>
+                            <li class="fragment">Dynamic fancy stuff (Javascript)</li>
+                            <li class="fragment">Request mechanism (HTTP)</li>
+                            <li class="fragment">Address mechanism (URL)</li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>Text: paragraphs, headings, lists</li>
+                                <li>Multimedia (images - png/gif/jpegs/svg, audio, video)</li>
+                                <li>Embedded content (iframes: youtube videos, flash)</li>
+                            </ul>
+                        </aside>
+                    </section>
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+                    <section>
+                        <h2>HyperText Markup Language (HTML)</h2>
+                        <p>Open standard for representing semantic <em class="feature-text">web content</em></p>
+                        <div class="screenshot">
+                            <img src="img/html_example.png" alt="Example of HTML code"/>
+                        </div>
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+                        <aside class="notes">
+                            <p>HTML has been through a number of different iterations over the
+                            past 20 years. It's currently on version 5. It's an open web
+                            standard, which makes it the natural choice for all web content
+                            - there're no dominant proprietary interests involved in changing
+                            the definition of the markup format - it's determined by a
+                            multi-vendor committee.</p>
+                            <p>Useful links</p>
+                            <ul>
+                                <li>The WWW Standards Group's
+                                    <a href="http://www.w3schools.com/html/default.asp">canonical HTML reference</a>
+                                </li>
+                            </ul>
+                        </aside>
+                    </section>
 
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+                    <section>
+                        <blockquote  class="quotation-marks">Each HTML element tells the browser something about the information that sits between its opening and closing tags.</blockquote>
+                        <div class="screenshot">
+                            <img src="img/html_css.png" alt="HTML & CSS book by Jon Duckett" />
+                        </div>
+                        <p class="small-text text-center">Jon Duckett</p>
+                    </section>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+                    <section>
+                        <h2 class="text-center">Some fundamental tags</h2>
+                        <pre class="fragment"><code data-trim contenteditable><p>paragraph</p></code></pre>
+                        <pre class="fragment"><code data-trim contenteditable><h1>Heading 1</h1>  <h2>Heading 2</h2>  <h3>Heading 3</h3></code></pre>
+                        <pre class="fragment"><code data-trim contenteditable><ul>Unordered list</ul></code></pre>
+                        <pre class="fragment"><code data-trim contenteditable><ol>Ordered list</ol></code></pre>
+                        <pre class="fragment"><code data-trim contenteditable><li>list item</li></code></pre>
+                        <pre class="fragment"><code data-trim contenteditable><img src="path/to-image.jpg" alt="img example" /></code></pre>
+                        <pre class="fragment"><code data-trim contenteditable><a href="/path-to-link">Anchor or link</a></code></pre>
+                    </section>
 
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
-				</section>
+                    <section>
+                        <h2 class="text-center">Useful HTML resources</h2>
+                        <ul>
+                            <li><a href="http://www.w3schools.com/html/">http://www.w3schools.com/html/</a></li>
+                            <li><a href="http://htmldog.com/guides/html/beginner/">http://htmldog.com/guides/html/beginner/</a></li>
+                            <li><a href="http://www.htmlandcssbook.com/">http://www.htmlandcssbook.com/</a></li>
+                            <li><a href="http://bit.ly/1Lci14D">HTML cheat sheet: http://bit.ly/1Lci14D</a></li>
+                        </ul>
+                    </section>
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+                    <section>
+                        <h2>Cascading Style Sheets (CSS)</h2>
+                        <p>Open standard for <em class="feature-text">layout and presentation</em></p>
+                        <div class="screenshot">
+                            <img src="img/CSS_example.png" alt="Example of CSS code" />
+                        </div>
+                    </section>
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
 
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
+                    <section>
+                        <h2>Cascading Style Sheets (CSS)</h2>
+                        <p>The main reason for CSS: Separating "content" from "presentation"</p>
+                        <p>See <a href="http://www.csszengarden.com">CSS Zen Garden</a> for a taste.<p>
+                        <p>Why do that:</p>
+                        <ul>
+                            <li>same content to different media devices: browser, tablet, phone, TV, fridge, braille.</li>
+                            <li>machine readability</li>
+                        </ul>
+                    </section>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+                    <section>
+                        <h2>Javascript</h2>
+                        <p>Scripting language built into all modern browsers used to program the behavior of web pages</p>
+                        <div class="screenshot">
+                            <img src="img/Javascript_example.png" alt="Example of Javascript code"/>
+                        </div>
+                    </section>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
+                    <section>
+                        <h2 class="text-center">Some examples:</h2>
+                        <ul>
+                            <li>
+                                <a href="https://stamps.nzpost.co.nz/personalised/stamps">https://stamps.nzpost.co.nz/personalised/stamps</a>
+                            </li>
+                            <li>
+                                <a href="http://js1k.com/2013-spring/demo/1390">http://js1k.com/2013-spring/demo/1390</a>
+                            </li>
+                        </ul>
+                    </section>
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
+                    <section>
+                        <h2 class="text-left">HyperText Transfer Protocol (HTTP)</h2>
+                        <div class="text-left">
+                            <p>You might recognise</p>
+                            <p class="feature-text">http://...</p>
+                            <p>Increasingly you should be seeing:</p>
+                            <p class="feature-text">https://...</p>
+                            <p>HTTP and HTTPS are used to request a URL from a remote location.</p>
+                        </div>
+                        <aside class="notes">
+                          for more info, http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+                        </aside>
+                    </section>
 
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+                    <section class="content-heavy">
+                        <h2>Uniform Resource Locator (URL)</h2>
+                        <p>Your request in your browser:</p>
+                        <div class="column">http://www.somehost.com/path/file.html</div>
+                        <p>Your browser asks your computer to get the IP address corresonding to <strong class="url">www.somehost.com</strong></p>
+                        <p>Your browser sends that IP this request:</p>
+                        <div class="column">GET /path/file.html HTTP/1.0<br />
+                          From: someuser@jmarshall.com<br />
+                          User-Agent: HTTPTool/1.0
+                        </div>
+                        <p>If the server is listening, your browser gets a response from <strong class="url">www.somehost.com:</strong></p>
+                        <div class="column">HTTP/1.0 200 OK<br />
+                          Date: Fri, 31 Dec 1999 23:59:59 GMT<br />
+                          Content-Type: text/html<br />
+                          Content-Length: 1354<br />
+                        </div>
+                        <p>... and your browser gets a bunch of HTML which it turns into a web page.</p>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
+                        <aside class="notes">
+                          <p>Further <a href="http://www.jmarshall.com/easy/http/#sample">information on this</a>.</p>
+                        </aside>
+                    </section>
+                </section>
+                <!-- end of techinical section -->
 
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
+                <!-- writing for the web section -->
+                <section>
+                    <section class="title-slide banner-2">
+                        <h2 class="yellow">Write for your audience!</h2>
+                    </section>
 
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
+                   <section>
+                        <h2 class="text-center">The basics of web writing</h2>
+                        <ul>
+                            <li class="fragment">Visitors have (approximately) zero patience</li>
+                            <li class="fragment">Less is more</li>
+                            <li class="fragment">Lists are great</li>
+                            <li class="fragment">Simple, short, sections</li>
+                       </ul>
+                       <aside class="notes">
+                        <ul>
+                            <li>how long do people stay on web pages? 10-20 seconds seems to be the general consensus</li>
+                        </ul>
+                       </aside>
+                    </section>
 
-			</div>
+                    <section>
+                        <h2 class="text-center">Tone</h2>
+                        <ul>
+                            <li class="fragment">Be authentic</li>
+                            <li class="fragment">Be consistent</li>
+                            <li class="fragment">Be appropriate</li>
+                        </ul>
+                        <aside class="notes">
+                            <a href="http://www.smashingmagazine.com/2012/08/21/finding-tone-voice">http://www.smashingmagazine.com/2012/08/21/finding-tone-voice</a>
+                        </aside>
+                    </section>
 
-		</div>
+                    <section>
+                        <h2>Compare</h2>
+                        <p class="fragment">Casual example: <a href="http://www.powershop.co.nz/">http://www.powershop.co.nz</a></p>
+                        <p class="fragment">Formal example: <a href="http://www.justice.govt.nz/">http://www.justice.govt.nz</a></p>
+                        <aside class="notes">
+                            <ul>
+                                <li>Powershop: light hearted "fight the power", fun "geeks", casual "no drama", kiwi "yarn"</li>
+                                <li>Justice: formal, factual, straight to the point, jargon, official sounding</li>
+                            </ul>
+                        </aside>
+                    </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+                    <section>
+                        <h2 class="text-center">Style guide</h2>
+                        <ul>
+                            <li><a href="https://www.govt.nz/about/our-style-guide">https://www.govt.nz/about/our-style-guide</a></li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>A style guide is a set of guidelines to ensure an appropriate tone and consistency.</li>
+                                <li>It can be very basic or very detailed.</li>
+                                <li>It can be used as a basis for auditing.</li>
+                                <li>It can be documented in the website itself - Drupal book module</li>
+                            </ul>
+                        </aside>
+                    </section>
 
-		<script>
+                    <section>
+                        <h2 class="text-center">Jargone / Hemingway Editor</h2>
+                        <ul>
+                            <li><a href="https://github.com/rooreynolds/jargone">Jargone: https://github.com/rooreynolds/jargone</a></li>
+                            <li><a href="http://www.hemingwayapp.com">Hemingway Editor: http://www.hemingwayapp.com</a></li>
+                        <aside class="notes">
+                            <p>Jargone is a bookmarklet for highlighting jargon words on any page.</p>
+                            <p>Hemingway app makes your writing bold and clear</p>
+                        </aside>
+                    </section>
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+                     <section>
+                        <h2 class="text-center">Some other useful links</h2>
+                        <ul>
+                            <li class="fragment"><a href="http://www.smashingmagazine.com/2012/08/21/finding-tone-voice">http://www.smashingmagazine.com/2012/08/21/finding-tone-voice</a></li>
+                            <li class="fragment"><a href="https://www.gov.uk/guidance/content-design/writing-for-gov-uk">https://www.gov.uk/guidance/content-design/writing-for-gov-uk</a></li>
+                            <li class="fragment"><a href="http://blog.hostbaby.com/2012/02/6-quick-tips-for-writing-website-content/">http://blog.hostbaby.com/2012/02/6-quick-tips-for-writing-website-content/</a></li>
+                        </ul>
+                    </section>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+                </section>
+                <!-- end of writing for the web section -->
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+                <!-- accessibility section -->
+                <section>
+                    <section class="title-slide banner-10">
+                        <h2 class="blue">Accessibility</h2>
+                        <img src="img/screen-readers.jpg" alt="Oh, so you've tested the site in every browser known to mankind.  And what about screenreaders?"/>
+                    </section>
 
-		</script>
+                    <section class="back-black">
+                        <h2 class="font-white">dsc001.jpg, image</h2>
+                        <aside class="notes">
+                            Too many images online are read by screen readers like this.  It gives no value or insight into the image being display.
+                        </aside>
+                    </section>
 
-	</body>
+                    <section>
+                        <img src="img/dsc001.jpg" alt="3 girls and a cat flying out of sea biscuit">
+                        <aside class="notes">
+                            This is how sighted viewers would see the same image.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2 class="text-center">Text equivalents for images</h2>
+                        <pre><code data-trim contenteditable>
+                            <img src="img/dsc001.jpg" alt="3 girls and a cat flying out of sea biscuit">
+                        </code></pre>
+                        <ul>
+                            <li class="fragment">"Alt text" is alternative text if the image isn't displayed</li>
+                            <li class="fragment">Provide alt text for all content images</li>
+                            <li class="fragment">Make the alt text succinct, 4-6 words, avoid use of "image of"</li>
+                            <li class="fragment">Image links: alt text describes the function of the image</li>
+                            <li class="fragment">Decorative images: no alt text eg <em class="feature-text">alt=""</em></li>
+                    </section>
+
+                    <section>
+                        <h2 class="text-center">Use correct (semantic) html markup</h2>
+                        <ul>
+                            <li class="fragment">Heading tags for headings
+                             <pre><code data-trim contenteditable>
+                                <h2>This is a heading</h2>
+                            </code></pre></li>
+                            <li class="fragment">List tags for lists
+                                <pre><code data-trim contenteditable>
+                                <ol>
+  <li>This is an ordered (numbered) list</li>
+</ol>
+
+<ul>
+  <li>This is an unordered list</li>
+</ul>
+                                </code></pre>
+                            </li>
+                        </ul>
+                        <aside class="notes">
+                            Heading tags are particularly important because they are an effective means for screen readers to tab/skim through a page.  If you are using bold text or color/size to distinguish headings, they will not be identified properly be screenreaders.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2 class="text-center">Descriptive links</h2>
+                        <p class="text-center">Link text should:</p>
+                        <ul>
+                            <li class="fragment">Describe the link's purpose</li>
+                            <li class="fragment">Be consistent</li>
+                            <li class="fragment">Never just be <a href="#">"Click here"</a> (or similiar)</li>
+                        </ul>
+                        <aside class="notes">
+                            Visually impaired web users often shortcut all the links of the page to navigate.  The link text is then pulled out of context.  Imagine having 10 links listed that say 'click here'. It's not very useful.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Videos</h2>
+                        <ul>
+                            <li class="fragment">Provide a transcript, captions, and/or sign language translation for all audio and video with speech</li>
+                            <li class="fragment">Provide a “described” version of a video when description is necessary for unsighted users to understand content.</li>
+                        </ul>
+                        <aside class="notes">
+                            (The described audio track can either be distributed with the video content, or as an audio only file.)
+                            eg: https://www.makingtaxsimpler.ird.govt.nz/
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Do not rely on visual cues for meaning</h2>
+                        <ul>
+                            <li class="fragment">Do not require users to perceive font, color, or other styling changes in order to understand meaning</li>
+                        </ul>
+                        <aside class="notes">
+                            For instance, don’t say, “The highlighted word in the previous paragraph is the most important,” or “Items marked in red are errors and need to be corrected,” unless the word or items are indicated in some other way.
+                        </aside>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2 class="text-center">Useful accessibility resources</h2>
+                        <ul>
+                            <li>NZ govt web toolkit: <a href="http://bit.ly/1KXmYNZ">http://bit.ly/1KXmYNZ</a></li>
+                            <li><a href="http://webaim.org/">http://webaim.org/</a></li>
+                        </ul>
+                        <aside class="notes">
+                            <a href="http://webaim.org/resources/contrastchecker/">Color contrast checker</a>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Do the Accessibility course!</h2>
+                        <p>Julius Serrano - Accessibility Expert</p>
+                        <p><a href="http://www.catalyst.net.nz/show-and-tell/training/web-accessibility-wcag-20-training-wgtn">http://bit.ly/1EcsVBb</a></p>
+                    </section>
+                </section>
+                <!-- end of accessibility section -->
+
+                <!-- drupal & WYSIWYG section -->
+                <section>
+                    
+                    <section class="image-slide">
+                        <h2>WYSIWYG</h2>
+                        <p>What you see is (kind of) what you get</p>
+                         <div class="screenshot">
+                            <img src="img/ckeditor_wysiwyg_screenshot.png" alt="Screenshot of a WYSIWYG editor" />
+                        </div>
+                    </section>
+
+                    <section class="image-slide">
+                        <h2>WYSIWYG: Reasons to love</h2>
+                        <ul>
+                            <li>Reminds us of Microsoft Word</li>
+                            <li>Clicking buttons is easy</li>
+                            <li>Hides the html</li>
+                        </ul>
+                        <img class="image-right" src="img/happy-cat.jpg" alt="smiling cat">
+                    </section>
+
+
+                    <section class="image-slide">
+                        <h2>WYSIWYG: Reasons to hate</h2>
+                        <ul>
+                            <li>The web is not Microsoft word</li>
+                            <li>Can (and often does) produce less than ideal HTML</li>
+                            <li>Does not teach you anything</li>
+                        </ul>
+                        <img class="image-right" src="img/grumpy-cat.jpg" alt="grumpy cat">
+                    </section>
+
+                    <section data-background="img/drupal_1.jpg">
+                    <a class="intro-link" href="https://www.youtube.com/watch?v=rF1X12PE6PY">Intro video</a>
+                    </section>
+
+                     <section>
+                        <h2 class="text-center"><em>Here's one I prepared earlier...</em></h2>
+                        <a href="http://test-ccmc.pantheon.io/">http://test-ccmc.pantheon.io</a>
+                        <aside class="notes">
+                            <ul>
+                                <li>Create accounts</li>
+                                <li>Log in</li>
+                                <li>Add a page</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2 class="text-center">WYSIWYG in action</h2>
+                        <ul>
+                            <li>Initial ckeditor configuration</li>
+                            <li>button layout</li>
+                            <li>paste from word</li>
+                            <li>embedding media</li>
+                            <li>spell checkers</li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>Full vs Filtered</li>
+                                <li>Source</li>
+                                <li>Headings</li>
+                                <li>Bold</li>
+                                <li>Italics</li>
+                                <li>Tables</li>
+                                <li>Blockquote</li>
+                                <li>Remove format</li>
+                                <li>Alignment</li>
+                                <li>Anchor</li>
+                                <li>Links</li>
+                                <li>Images</li>
+                                <li>Videos</li>
+                                <li>Pasting from word</li>
+                                <li>Tables</li>
+                                <li>EXERCISE: take some content and recreate in WYSIWYG</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2 class="text-center">Your turn!</h2>
+                        <ul>
+                            <li>Headings</li>
+                            <li>Bold</li>
+                            <li>Italics</li>
+                            <li>Tables</li>
+                            <li>Blockquote</li>
+                            <li>Remove format</li>
+                            <li>Alignment</li>
+                            <li>Anchor/Links</li>
+                            <li>Images</li>
+                            <li>Videos</li>
+                            <li>Pasting from word</li>
+                        </ul>
+
+                    </section>
+
+                    <section>
+                        <h2 class="text-center">More editing:</h2>
+                        <ul>
+                            <li>Menus</li>
+                            <li>Blocks</li>
+                            <li>Taxonomy</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Users and roles</h2>
+                        <ul>
+                            <li class="fragment"><em class="feature-text">User:</em> An individual that is assigned one or more role/s</li>
+                            <li class="fragment"><em class="feature-text">Role:</em> A set of permissions</li>
+                            <li class="fragment"><em class="feature-text">Permissions:</em> The ability to view, add, change, delete, administer aspects fo the site</li>
+                        </ul>
+                    </section>
+
+                </section>
+                 <!-- end of drupal & WYSIWYG section -->
+
+                <section>
+                    <section class="title-slide banner-4">
+                        <h2 class="red">Advanced</h2>
+                    </section>
+
+                     <section>
+                        <h2 class="text-center">What interests you?</h2>
+                        <ul>
+                            <li>Views?</li>
+                            <li>Panels?</li>
+                            <li>Bootstrap?</li>
+                            <li>Rules?</li>
+                            <li>Honeypot?</li>
+                            <li>Webform?</li>
+                            <li>Linkit?</li>
+                            <li>Pantheon?</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Learn more</h2>
+                    <ul>
+                        <li><a href="http://drupal.org">Drupal.org</a></li>
+                        <li>Catalyst Drupal Site Builder's course: <a href="http://www.catalyst.net.nz/show-and-tell/training/drupal-site-builders-2-days-wgtn">http://bit.ly/1FsT3yZ</a></li>
+                        <li>Stack Overflow</li>
+                        <li><a href="http://codekarate.com/blog/best-way-learn-drupal">http://codekarate.com/blog/best-way-learn-drupal</a></li>
+                        <li>Practice and experiment</li>
+                        <li>This talk is available online at <a href="http://memoirdiem.com/drupal-content-managers/">http://memoirdiem.com/drupal-content-managers/</a><p class="small-text">Usage tips: Hit "ESC" to view index of presentation. Hit "s" in the Chrome or Firefox browser to view speaker's panel.</p></li>
+                    </ul>
+                </section>
+
+                 <section>
+                    <h2 class="text-center"><em>Ask questions!</em></h2>
+                </section>
+
+                <section>
+                    <h2>Thanks to:</h2>
+                    <ul>
+                        <li>Julius Serrano (Accessibility Expert)</li>
+                        <li>Sean Hamlin (Drupal Dev)</li>
+                        <li>Dave Lane (Drupal Dev)</li>
+                        <li>This open source browser-based presentation software (Reveal.js) created by Hakim el Hattab.</li>
+                    </ul>
+                </section>
+           
+            </div>
+
+            <div class="footer">
+                <div class="scarf">
+                    <div class="scarf-orange"></div>
+                    <div class="scarf-yellow"></div>
+                    <div class="scarf-blue"></div>
+                    <div class="scarf-green"></div>
+                </div>
+                <div class="footer-inner">
+                    <div>
+                        <!-- NOTE: use only one of these. open-source-technologists is the standard -->
+                        <p class="open-source-technologists">open source technologists</p>
+                        <!-- <p class="freedom-to-innovate">freedom to innovate</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
 </html>
