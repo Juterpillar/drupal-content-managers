@@ -47,6 +47,7 @@
 
         <!-- Please put any custom styles here -->
         <style>
+
             .reveal .slides h2 {
                font-size: 1.5em;
                text-align: left;
@@ -113,6 +114,10 @@
                 font-size: 60%;
             }
 
+            .html-examples h1 { font-size: 60px }
+            .html-examples h2 { font-size: 45px !important; text-align: center !important }
+            .html-examples h3 { font-size: 30px }
+
         </style>
     </head>
 
@@ -127,7 +132,8 @@
                     <h1 class="catalyst-logo">Catalyst</h1>
                     <h3>Drupal Content Managers</h3>
                     <p class="small-text text-center">
-                        Presented by <a href="#">Julia Larsen</a>
+                        Presented by Julia Larsen</br>
+                        Drupal Developer
                     </p>
                 </section>
 
@@ -135,23 +141,21 @@
                     <h2 class="orange">Hi! I'm Julia.</h2>
                      <aside class="notes">
                         <ul>
-                            <li>Drupal dev 1.5 years</li>
-                            <li>Worked on nzpost stamps website, ministry of health, IRD, LINZ, Catalyst website</li>
-                            <li>In other lives I've been a Art Consultant, Travel Consultant and Project Manager</li> 
-                            <li>Outside of work: Jet, drawing/painting, motorbikes, wine</li> 
+                            <li>Drupal Dev since November 2013</li>
+                            <li>Worked on NZ Post Stamps website, Ministry of Health, IRD, LINZ, Te Papa, and our own Catalyst website</li> 
                         </ul>
                     </aside>
                 </section>
 
                 <section>
                     <h2 class="text-center">Housekeeping</h2>
-                    <p>Follow along at <a href="http://memoirdiem.com/drupal-content-managers/">http://memoirdiem.com/drupal-content-managers/</a></p>
                     <aside class="notes">
                         <ul>
                             <li>Toliets, fire alarms</li>
                             <li>Breaks</li>
                             <li>Style of the day</li>
                             <li>Questions</li>
+                            <li>Follow along on your desktop</li>
                         </ul>
                     </aside>
                 </section>
@@ -163,33 +167,26 @@
                         <li class="fragment">HTML / CSS</li>
                         <li class="fragment">Writing for web</li>
                         <li class="fragment">Accessibility</li>
-                        <li class="fragment">Drupal &amp; WYSIWYG
+                        <li class="fragment">Drupal
                             <ul>
-                                <li>Overview</li>
-                                <li>Content editing</li>
-                                <li>Useful modules</li>
-                                <li>Users and roles</li>
+                                <li class="fragment">Overview</li>
+                                <li class="fragment">Content editing and the WYSIWYG</li>
+                                <li class="fragment">Menus</li>
+                                <li class="fragment">Users and roles</li>
+                                <li class="fragment">Taxonomy</li>
+                                <li class="fragment">Your topic here</li>
                             </ul>
                         </li>
-                        <li class="fragment">Your topic here</li>
                     </ul>
                     <aside class="notes">
-                    <ul>
-                        <li>Overview of the web, what it's made of and the basics of how it works</li>
-                        <li>HTML / CSS: content and presentation. key elements, semantics</li>
-                        <li>The fundamentals of writing for web: tone, jargon</li>
-                        <li>Accessibility: why, how</li>
-                        <li>Drupal
-                            <ul>
-                                <li>Overview</li>
-                                <li>Content editing</li>
-                                <li>Useful modules</li>
-                                <li>Users and roles</li>
-                                <li>Do some exercises and play in a test environment</li>
-                            </ul>
-                        </li>
-                        <li>Your topic here: extra time. We can discuss at lunch</li>
-                    </ul>
+                        <ul>
+                            <li>Overview of the web, what it's made of and the basics of how it works</li>
+                            <li>HTML / CSS: content and presentation. key elements, semantics</li>
+                            <li>The fundamentals of writing for web: tone, jargon</li>
+                            <li>Accessibility: why, how</li>
+                            <li>Drupal - some context, content and structure (time permitting)</li>
+                            <li>Your topic here: extra time. We can discuss at lunch</li>
+                        </ul>
                     </aside>
                 </section>
 
@@ -209,23 +206,34 @@
                     <section>
                         <h2 class="text-center">The Web is made of...</h2>
                         <ul>
-                            <li class="fragment">Content (HTML), including:
-                                <ul>
-                                    <li>Text</li>
-                                    <li>Multimedia (images, audio, video)</li>
-                                    <li>Embedded content (iframes, flash)</li>
-                                </ul>
+                            <li class="fragment">
+                                <span class="feature-text">HTML: </span> 
+                                Content
                             </li>
-                            <li class="fragment">Presentation - layout and style (CSS)</li>
-                            <li class="fragment">Dynamic fancy stuff (Javascript)</li>
-                            <li class="fragment">Request mechanism (HTTP)</li>
-                            <li class="fragment">Address mechanism (URL)</li>
+                            <li class="fragment">
+                                <span class="feature-text">CSS: </span> 
+                                Presentation
+                            </li>
+                            <li class="fragment">
+                                <span class="feature-text">Javascript: </span> 
+                                Interactive effects
+                            </li>
+                            <li class="fragment">
+                                <span class="feature-text">HTTP: </span> 
+                                Request mechanism
+                            </li>
+                            <li class="fragment">
+                                <span class="feature-text">URL: </span> 
+                                Address to the resource
+                            </li>
                         </ul>
                         <aside class="notes">
                             <ul>
                                 <li>Text: paragraphs, headings, lists</li>
                                 <li>Multimedia (images - png/gif/jpegs/svg, audio, video)</li>
                                 <li>Embedded content (iframes: youtube videos, flash)</li>
+                                <li>(HyperText Transfer Protocol) The request mechanism</li>
+                                <li>(Uniform Resource Locator) An address to a resource on the internet</li>
                             </ul>
                         </aside>
                     </section>
@@ -238,12 +246,14 @@
                         </div>
 
                         <aside class="notes">
-                            <p>HTML has been through a number of different iterations over the
-                            past 20 years. It's currently on version 5. It's an open web
-                            standard, which makes it the natural choice for all web content
-                            - there're no dominant proprietary interests involved in changing
-                            the definition of the markup format - it's determined by a
-                            multi-vendor committee.</p>
+                            <ul>
+                                <li>Number of different iterations over past 20 years</li>
+                                <li>Currently version 5 HTML5</li>
+                                <li>Is an open web standard - no dominant proprietary interests</li>
+                                <li>The markup format is determined by a multi-vendor committee called the 
+                                    <a href="http://www.w3.org/Consortium/">W3C (World Wide Web Consortium).</a>
+                                </li>
+                            <ul>
                             <p>Useful links</p>
                             <ul>
                                 <li>The WWW Standards Group's
@@ -256,17 +266,19 @@
                     <section>
                         <blockquote  class="quotation-marks">Each HTML element tells the browser something about the information that sits between its opening and closing tags.</blockquote>
                         <div class="screenshot">
-                            <img src="img/html_css.png" alt="HTML & CSS book by Jon Duckett" />
+                            <img src="img/html_css.png" alt="HTML &amp; CSS book by Jon Duckett" />
                         </div>
                         <p class="small-text text-center">Jon Duckett</p>
                     </section>
 
-                    <section>
+                    <section class="html-examples">
                         <h2 class="text-center">Some fundamental tags</h2>
                         <pre class="fragment"><code data-trim contenteditable><p>paragraph</p></code></pre>
-                        <pre class="fragment"><code data-trim contenteditable><h1>Heading 1</h1>  <h2>Heading 2</h2>  <h3>Heading 3</h3></code></pre>
-                        <pre class="fragment"><code data-trim contenteditable><ul>Unordered list</ul></code></pre>
-                        <pre class="fragment"><code data-trim contenteditable><ol>Ordered list</ol></code></pre>
+                        <h1 class="fragment">&lt;h1&gt;Heading 1&lt;h1&gt;</h1>
+                        <h2 class="fragment">&lt;h2&gt;Heading 2&lt;h2&gt;</h2>
+                        <h3 class="fragment">&lt;h3&gt;Heading 3&lt;h3&gt;</h3>                     
+                        <pre class="fragment"><code data-trim contenteditable><ul><li>Unordered list</li></ul></code></pre>
+                        <pre class="fragment"><code data-trim contenteditable><ol><li>Ordered list</li></ol></code></pre>
                         <pre class="fragment"><code data-trim contenteditable><li>list item</li></code></pre>
                         <pre class="fragment"><code data-trim contenteditable><img src="path/to-image.jpg" alt="img example" /></code></pre>
                         <pre class="fragment"><code data-trim contenteditable><a href="/path-to-link">Anchor or link</a></code></pre>
@@ -292,26 +304,25 @@
 
 
                     <section>
-                        <h2>Cascading Style Sheets (CSS)</h2>
-                        <p>The main reason for CSS: Separating "content" from "presentation"</p>
-                        <p>See <a href="http://www.csszengarden.com">CSS Zen Garden</a> for a taste.<p>
-                        <p>Why do that:</p>
-                        <ul>
-                            <li>same content to different media devices: browser, tablet, phone, TV, fridge, braille.</li>
-                            <li>machine readability</li>
+                        <h2>Why Cascading Style Sheets (CSS)?</h2>
+                        <p class="fragment">To separate <em class="feature-text">content</em> from <em class="feature-text">presentation</em></p>
+                        <ul class="fragment" >
+                            <li>allows for machine readability</li>
+                            <li>allows same content to be used across different media devices: browser, tablet, phone, TV, fridge, braille etc.</li>
                         </ul>
+                        <p class="fragment">See <a href="http://www.csszengarden.com">CSS Zen Garden</a> for some great examples.<p>
                     </section>
 
                     <section>
                         <h2>Javascript</h2>
-                        <p>Scripting language built into all modern browsers used to program the behavior of web pages</p>
+                        <p>Scripting language built into all modern browsers</p>
                         <div class="screenshot">
                             <img src="img/Javascript_example.png" alt="Example of Javascript code"/>
                         </div>
                     </section>
 
                     <section>
-                        <h2 class="text-center">Some examples:</h2>
+                        <h2 class="text-center">Javascript in action:</h2>
                         <ul>
                             <li>
                                 <a href="https://stamps.nzpost.co.nz/personalised/stamps">https://stamps.nzpost.co.nz/personalised/stamps</a>
@@ -323,37 +334,31 @@
                     </section>
 
                     <section>
-                        <h2 class="text-left">HyperText Transfer Protocol (HTTP)</h2>
-                        <div class="text-left">
-                            <p>You might recognise</p>
-                            <p class="feature-text">http://...</p>
-                            <p>Increasingly you should be seeing:</p>
-                            <p class="feature-text">https://...</p>
-                            <p>HTTP and HTTPS are used to request a URL from a remote location.</p>
+                        <h2 class="text-center">HyperText Transfer Protocol / Secure</h2>
+                        <div>
+                            <p class="feature-text text-center">http://</p>
+                            <p class="feature-text text-center">vs</p>
+                            <p class="feature-text text-center">https://</p>
                         </div>
                         <aside class="notes">
-                          for more info, http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+                            <ul>
+                                <li>Increasingly you should be seeing more https and less http</li>
+                                <li>HTTP and HTTPS are used to request a URL from a remote location.</li>
+                                <li>More info: http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol</li>
+                                <li>Using HTTPS, the computers agree on a "code" between them, and then they scramble the messages using that "code" so that no one in between can read them.</li>
+                            </ul>
                         </aside>
                     </section>
 
                     <section class="content-heavy">
                         <h2>Uniform Resource Locator (URL)</h2>
-                        <p>Your request in your browser:</p>
-                        <div class="column">http://www.somehost.com/path/file.html</div>
-                        <p>Your browser asks your computer to get the IP address corresonding to <strong class="url">www.somehost.com</strong></p>
-                        <p>Your browser sends that IP this request:</p>
-                        <div class="column">GET /path/file.html HTTP/1.0<br />
-                          From: someuser@jmarshall.com<br />
-                          User-Agent: HTTPTool/1.0
-                        </div>
-                        <p>If the server is listening, your browser gets a response from <strong class="url">www.somehost.com:</strong></p>
-                        <div class="column">HTTP/1.0 200 OK<br />
-                          Date: Fri, 31 Dec 1999 23:59:59 GMT<br />
-                          Content-Type: text/html<br />
-                          Content-Length: 1354<br />
-                        </div>
-                        <p>... and your browser gets a bunch of HTML which it turns into a web page.</p>
-
+                        <ol>
+                            <li>Request made: <span class="feature-text">http://www.somehost.com/path/file.html</span></li>
+                            <li>Your browser asks your computer to get the IP address corresonding to <strong class="url">www.somehost.com</strong></li>
+                            <li>Your browser sends that IP this request</li>
+                            <li>If the server is listening, your browser gets a response from <strong class="url">www.somehost.com</strong></li>
+                            <li>Your browser receives HTML which it turns into a web page</li>
+                        </ol>
                         <aside class="notes">
                           <p>Further <a href="http://www.jmarshall.com/easy/http/#sample">information on this</a>.</p>
                         </aside>
@@ -422,18 +427,7 @@
                     </section>
 
                     <section>
-                        <h2 class="text-center">Jargone / Hemingway Editor</h2>
-                        <ul>
-                            <li><a href="https://github.com/rooreynolds/jargone">Jargone: https://github.com/rooreynolds/jargone</a></li>
-                            <li><a href="http://www.hemingwayapp.com">Hemingway Editor: http://www.hemingwayapp.com</a></li>
-                        <aside class="notes">
-                            <p>Jargone is a bookmarklet for highlighting jargon words on any page.</p>
-                            <p>Hemingway app makes your writing bold and clear</p>
-                        </aside>
-                    </section>
-
-                     <section>
-                        <h2 class="text-center">Some other useful links</h2>
+                        <h2 class="text-center">Some useful links</h2>
                         <ul>
                             <li class="fragment"><a href="http://www.smashingmagazine.com/2012/08/21/finding-tone-voice">http://www.smashingmagazine.com/2012/08/21/finding-tone-voice</a></li>
                             <li class="fragment"><a href="https://www.gov.uk/guidance/content-design/writing-for-gov-uk">https://www.gov.uk/guidance/content-design/writing-for-gov-uk</a></li>
@@ -479,7 +473,7 @@
                     </section>
 
                     <section>
-                        <h2 class="text-center">Use correct (semantic) html markup</h2>
+                        <h2 class="text-center">Use semantic html markup</h2>
                         <ul>
                             <li class="fragment">Heading tags for headings
                              <pre><code data-trim contenteditable>
@@ -488,12 +482,12 @@
                             <li class="fragment">List tags for lists
                                 <pre><code data-trim contenteditable>
                                 <ol>
-  <li>This is an ordered (numbered) list</li>
-</ol>
+                                  <li>This is an ordered (numbered) list</li>
+                                </ol>
 
-<ul>
-  <li>This is an unordered list</li>
-</ul>
+                                <ul>
+                                  <li>This is an unordered list</li>
+                                </ul>
                                 </code></pre>
                             </li>
                         </ul>
@@ -541,18 +535,21 @@
                     <section>
                         <h2 class="text-center">Useful accessibility resources</h2>
                         <ul>
-                            <li>NZ govt web toolkit: <a href="http://bit.ly/1KXmYNZ">http://bit.ly/1KXmYNZ</a></li>
-                            <li><a href="http://webaim.org/">http://webaim.org/</a></li>
+                            <li>NZ govt web toolkit: 
+                                <a target="_blank" href="http://bit.ly/1KXmYNZ">http://bit.ly/1KXmYNZ</a></li>
+                            <li>
+                                <a target="_blank" href="http://webaim.org/resources/contrastchecker/">http://webaim.org/</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="http://webaim.org/resources/contrastchecker/">http://webaim.org/resources/contrastchecker</a>
+                            </li>
                         </ul>
-                        <aside class="notes">
-                            <a href="http://webaim.org/resources/contrastchecker/">Color contrast checker</a>
-                        </aside>
                     </section>
 
                     <section>
                         <h2>Do the Accessibility course!</h2>
                         <p>Julius Serrano - Accessibility Expert</p>
-                        <p><a href="http://www.catalyst.net.nz/show-and-tell/training/web-accessibility-wcag-20-training-wgtn">http://bit.ly/1EcsVBb</a></p>
+                        <p><a  target="_blank" href="http://www.catalyst.net.nz/show-and-tell/training/web-accessibility-wcag-20-training-wgtn">http://bit.ly/1EcsVBb</a></p>
                     </section>
                 </section>
                 <!-- end of accessibility section -->
@@ -560,6 +557,52 @@
                 <!-- drupal & WYSIWYG section -->
                 <section>
                     
+                    <section data-background="img/drupal_1.jpg"></section>
+
+                    <section>
+                        <h2 class="text-center">An overview of Drupal</h2>
+                        <ul>
+                            <li class="fragment">Open source PHP CMS platform</li>
+                            <li class="fragment">Powers million of websites</li>
+                            <li class="fragment">Current (stable release) is version 7</li>
+                            <li class="fragment">11,151+ contributed modules for Drupal 7</li>
+                            <li class="fragment">96,476+ people contributing to the project</li>
+                            <li class="fragment">Drupal 8 - ~11 critical issues</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-center">
+                            <a href="https://www.drupal.org/Drupal" target="_blank">Drupal.org</a>
+                        </h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>Who's using it</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                     <section>
+                        <h2 class="text-center"><em>Today's sandbox</em></h2>
+                        <a target="_blank" href="http://live-ccmc.pantheon.io/">http://live-ccmc.pantheon.io/</a>
+                        <aside class="notes">
+                            <ul>
+                                <li>Create accounts</li>
+                                <li>Log in</li>
+                                <li>Add a page</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                     <section>
+                        <h2>Content types and nodes</h2>
+                        <ul>
+                            <li class="fragment">A <em class="feature-text">content type</em> is a pre-defined collection of fields</li>
+                            <li class="fragment">Drupal comes with 2 content types defined; <em class="feature-text">basic page</em> and <em class="feature-text">article</em></li>
+                            <li class="fragment">A <em class="feature-text">node</em> is an individual instance of a content type, eg the "about us" page is a node</li>
+                        </ul>
+                    </section>
+
                     <section class="image-slide">
                         <h2>WYSIWYG</h2>
                         <p>What you see is (kind of) what you get</p>
@@ -589,30 +632,14 @@
                         <img class="image-right" src="img/grumpy-cat.jpg" alt="grumpy cat">
                     </section>
 
-                    <section data-background="img/drupal_1.jpg">
-                    <a class="intro-link" href="https://www.youtube.com/watch?v=rF1X12PE6PY">Intro video</a>
-                    </section>
-
-                     <section>
-                        <h2 class="text-center"><em>Here's one I prepared earlier...</em></h2>
-                        <a href="http://test-ccmc.pantheon.io/">http://test-ccmc.pantheon.io</a>
-                        <aside class="notes">
-                            <ul>
-                                <li>Create accounts</li>
-                                <li>Log in</li>
-                                <li>Add a page</li>
-                            </ul>
-                        </aside>
-                    </section>
-
                     <section>
                         <h2 class="text-center">WYSIWYG in action</h2>
                         <ul>
                             <li>Initial ckeditor configuration</li>
-                            <li>button layout</li>
-                            <li>paste from word</li>
-                            <li>embedding media</li>
-                            <li>spell checkers</li>
+                            <li>Button layout</li>
+                            <li>Paste from word</li>
+                            <li>Embedding media</li>
+                            <li>Spell checkers</li>
                         </ul>
                         <aside class="notes">
                             <ul>
@@ -655,11 +682,11 @@
                     </section>
 
                     <section>
-                        <h2 class="text-center">More editing:</h2>
+                        <h2 class="text-center">Menus</h2>
                         <ul>
-                            <li>Menus</li>
-                            <li>Blocks</li>
-                            <li>Taxonomy</li>
+                            <li class="fragment">Hierarchical list of links</li>
+                            <li class="fragment">Multiple menus on every Drupal site</li>
+                            <li class="fragment">The "Main menu" is used for the main navigation of the website</li>
                         </ul>
                     </section>
 
@@ -669,6 +696,28 @@
                             <li class="fragment"><em class="feature-text">User:</em> An individual that is assigned one or more role/s</li>
                             <li class="fragment"><em class="feature-text">Role:</em> A set of permissions</li>
                             <li class="fragment"><em class="feature-text">Permissions:</em> The ability to view, add, change, delete, administer aspects fo the site</li>
+                        </ul>
+                    </section>
+
+                     <section>
+                        <h2 class="text-center">Taxonomy</h2>
+                        <p class="text-center">Categorising content</p>
+                        <ul>
+                            <li class="fragment">Terms are grouped into <em class="feature-text">vocabularies,</em> eg "Fruit"</li>
+                            <li class="fragment">Taxonomy <em class="feature-text">terms</em> are added to a vocabularly, eg "Banana", "Apple"</li>
+                            <li class="fragment">You may have as many vocabularies as your website needs</li>
+                            <li class="fragment">You can add taxonomy fields to vocabularies and terms (D7+)</li>
+                        </ul>
+                    </section>
+
+                     <section>
+                        <h2 class="text-center">Blocks</h2>
+                        <blockquote>The boxes which can be made to appear in various regions of a Drupal website are called Blocks. (drupal.org)</blockquote>
+                        <ul>
+                            <li class="fragment">Blocks are able to be displayed in 1 region on 1 or many pages</li>
+                            <li class="fragment">A block can be custom or contributed</li>
+                            <li class="fragment">Visibility configurable by user, page, content type.</li>
+                            <li class="fragment">Drag and drop to readjust order of blocks</li>
                         </ul>
                     </section>
 
@@ -699,22 +748,18 @@
                     <h2>Learn more</h2>
                     <ul>
                         <li><a href="http://drupal.org">Drupal.org</a></li>
-                        <li>Catalyst Drupal Site Builder's course: <a href="http://www.catalyst.net.nz/show-and-tell/training/drupal-site-builders-2-days-wgtn">http://bit.ly/1FsT3yZ</a></li>
+                        <li>Catalyst Drupal Site Builder's course: <a target="_blank" href="http://www.catalyst.net.nz/show-and-tell/training/drupal-site-builders-2-days-wgtn">http://bit.ly/1FsT3yZ</a></li>
                         <li>Stack Overflow</li>
                         <li><a href="http://codekarate.com/blog/best-way-learn-drupal">http://codekarate.com/blog/best-way-learn-drupal</a></li>
-                        <li>Practice and experiment</li>
-                        <li>This talk is available online at <a href="http://memoirdiem.com/drupal-content-managers/">http://memoirdiem.com/drupal-content-managers/</a><p class="small-text">Usage tips: Hit "ESC" to view index of presentation. Hit "s" in the Chrome or Firefox browser to view speaker's panel.</p></li>
+                        <li>Wellington Drupal Meetup: <br /><a href="http://www.meetup.com/Wellington-Drupal-Meetup/" target="_blank">http://www.meetup.com/Wellington-Drupal-Meetup/</a></li>
+                        <li>Practice, experiment and ask questions!</li>
                     </ul>
-                </section>
-
-                 <section>
-                    <h2 class="text-center"><em>Ask questions!</em></h2>
                 </section>
 
                 <section>
                     <h2>Thanks to:</h2>
                     <ul>
-                        <li>Julius Serrano (Accessibility Expert)</li>
+                        <li>Julius Serrano (Catalyst Accessibility Expert)</li>
                         <li>Sean Hamlin (Drupal Dev)</li>
                         <li>Dave Lane (Drupal Dev)</li>
                         <li>This open source browser-based presentation software (Reveal.js) created by Hakim el Hattab.</li>
