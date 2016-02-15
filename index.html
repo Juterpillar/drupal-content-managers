@@ -165,15 +165,15 @@
                     <ul>
                         <li class="fragment">Intro to the web
                             <ul>
-                               <li class="fragment">HTML / CSS</li>
+                               <li class="fragment">HTML / CSS / Javascript</li>
                                 <li class="fragment">Writing for web</li>
                                 <li class="fragment">Accessibility</li>
                             </ul>
                         </li>
-                        <li class="fragment">Drupal for content editors
+                        <li class="fragment">Drupal (for content editors)
                             <ul>
-                                <li class="fragment">Overview</li>
-                                <li class="fragment">Content types, nodes, and the WYSIWYG</li>
+                                <li class="fragment">Content types, nodes, WYSIWYG</li>
+                                <li class="fragment">Path aliases</li>
                                 <li class="fragment">Menus</li>
                                 <li class="fragment">Users and roles</li>
                                 <li class="fragment">Taxonomy</li>
@@ -308,18 +308,20 @@
 
 
                     <section>
-                        <h2>Why Cascading Style Sheets (CSS)?</h2>
-                        <p class="fragment">To separate <em class="feature-text">content</em> from <em class="feature-text">presentation</em></p>
+                        <h2>Cascading Style Sheets (CSS)</h2>
+                        <p class="fragment">Separates <em class="feature-text">content</em> from <em class="feature-text">presentation</em></p>
                         <ul class="fragment" >
                             <li>allows for machine readability</li>
                             <li>allows same content to be used across different media devices: browser, tablet, phone, TV, fridge, braille etc.</li>
+                            <li>The last of any conflicting rules will be applied</li>
+                            <li>The most specific of any conflicting rules will be applied</li>
                         </ul>
                         <p class="fragment">See <a href="http://www.csszengarden.com">CSS Zen Garden</a> for some great examples.<p>
                     </section>
 
                     <section>
                         <h2>Javascript</h2>
-                        <p>Scripting language built into all modern browsers</p>
+                        <p>A scripting language built into all modern web browsers<br>commonly used to create <em class="feature-text">interactive effects</em></p>
                         <div class="screenshot">
                             <img src="img/Javascript_example.png" alt="Example of Javascript code"/>
                         </div>
@@ -357,13 +359,17 @@
                     <section class="content-heavy">
                         <h2>Uniform Resource Locator (URL)</h2>
                         <ol>
-                            <li>Request made: <span class="feature-text">http://www.somehost.com/path/file.html</span></li>
-                            <li>Your browser asks your computer to get the IP address corresonding to <strong class="url">www.somehost.com</strong></li>
+                            <li>Request made: <span class="feature-text">https://www.catalyst.net.nz/training/course/drupal-content-managers-wellington</span></li>
+                            <li>Your browser asks your computer to get the IP address corresonding to <strong class="url">www.catalyst.net.nz</strong></li>
                             <li>Your browser sends that IP this request</li>
-                            <li>If the server is listening, your browser gets a response from <strong class="url">www.somehost.com</strong></li>
+                            <li>If the server is listening, your browser gets a response from <strong class="url">www.catalyst.net.nz</strong></li>
                             <li>Your browser receives HTML which it turns into a web page</li>
                         </ol>
                         <aside class="notes">
+                            <ul>
+                                <li>Two main components: protocol identifier eg (http) and resource name eg somehost.com</li>
+                                <li><img src="https://treehouselogic.files.wordpress.com/2011/09/http-diagram.jpg" alt="http diagram" /></li>
+                            </ul>
                           <p>Further <a href="http://www.jmarshall.com/easy/http/#sample">information on this</a>.</p>
                         </aside>
                     </section>
@@ -568,10 +574,10 @@
                         <ul>
                             <li class="fragment">Open source PHP CMS platform</li>
                             <li class="fragment">Powers million of websites</li>
-                            <li class="fragment">Current (stable release) is version 7</li>
-                            <li class="fragment">11,151+ contributed modules for Drupal 7</li>
-                            <li class="fragment">96,476+ people contributing to the project</li>
-                            <li class="fragment">Drupal 8 - ~11 critical issues</li>
+                            <li class="fragment">D7 released Jan 11: 11,620 modules</li>
+                            <li class="fragment">D8 released Jan 15: 1,362 modules</li>
+                            <li class="fragment">99,642+ people contributing to the project</li>
+                            <li class="fragment">2,469+ commits in the last week</li>
                         </ul>
                     </section>
 
@@ -683,6 +689,11 @@
                             <li>Pasting from word</li>
                         </ul>
 
+                    </section>
+
+                    <section>
+                        <h2 class="text-center">Path aliases and redirects</h2>
+                        <blockquote>Oops, looks like this request tried to create an infinite loop. We do not allow such things here. We are a professional website!</blockquote>
                     </section>
 
                     <section>
